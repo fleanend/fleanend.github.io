@@ -6,7 +6,7 @@ var names = ["Edoardo","Federico","Enrico","Giulia"];
 var snames = ["Ferrante","D'Ambrosio","Ferro","Cagnes"];
 var fnames = ["","","",""];
 var bdays = ["1993-01-01","1993-02-02","1993-03-03","1993-04-04"];
-var str = "";
+var str = "<div class=\"profileHeader vcard v-card\" itemscope itemtype=\"http://schema.org/Person\">";
 for (var i = 0; i < 4; i++)
 {
 	
@@ -17,6 +17,7 @@ for (var i = 0; i < 4; i++)
 	str+="</div>\n";
 
 }
+str+="</div>\n";
 document.write(str);
 
 </script>
