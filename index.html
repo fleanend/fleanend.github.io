@@ -5,16 +5,15 @@
 var names = ["Edoardo","Federico","Enrico","Giulia"];
 var snames = ["Ferrante","D'Ambrosio","Ferro","Cagnes"];
 var fnames = ["","","",""];
-var bdays = ["01/01/1993","02/02/1993","03/03/1993","04/04/1993"];
+var bdays = ["1993-01-01","1993-02-02","1993-03-03","1993-04-04"];
 var str = "";
 for (var i = 0; i < 4; i++)
 {
 	
-	str+="<p class=\"h-card\">";
-	str+="\t<span class=\"p-given-name\">"+names[i]+"</span>";
-	str+="\t<span class=\"p-family-name\">"+snames[i]+"</span>";
-	str+="\t<span class=\"p-name\">"+names[i] + " " + snames[i] +"</span>";
-	str+="\t<span class=\"dt-bday\">"+bdays[i] +"</span>";
+	str+="<div class=\"v-card\">";
+	str+="\t<h1 class=\"fn\">"+names[i] + " " + snames[i]+"</h1>";
+	str+="\t<h1 class=\"n\">"+snames[i]+";"+names[i]"</h1>";
+	str+="\t<h1 class=\"bday\">"+bdays[i] +"</span>";
 	str+="</p>\n";
 
 }
