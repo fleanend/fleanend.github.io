@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<title>AirTrafficDashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css\stile.css">
+<body onload="openGraph('livemap');">
+
+<div class="w3-bar w3-black">
+  <button class="w3-bar-item">Air Traffic Dashboard</button>
+  <button class="w3-bar-item w3-button" onclick="openGraph('livemap')">Mappa tempo reale</button>
+  <button class="w3-bar-item w3-button" onclick="openGraph('flussoF')">Flusso da un aeroporto</button>
+  <button class="w3-bar-item w3-button" onclick="openGraph('flussoT')">Flusso verso un aeroporto</button>
+</div>
+
+<div id="livemap" class="w3-container w3-display-container graph"></div>
+
+<div id="flussoF" class="w3-container w3-display-container graph" style="display:none"></div>
+
+<div id="flussoT" class="w3-container w3-display-container graph" style="display:none"></div>
+
+<script>
+function openGraph(GraphID) {
+    var i;
+    var x = document.getElementsByClassName("graph");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    var containerDiv = document.getElementById(GraphID).style.display = "block";
+	initViz(GraphID)
+}
+</script>
+<script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
+    <script type="text/javascript">
+        function initViz(GraphID) {
+			switch(GraphID){
+				case "livemap":
+					url =  "http://212.77.88.78/views/liveMap/Dashboard";
+					break;
+				case "flussoF":
+					url =  "http://212.77.88.78/views/flowMap/Dashboard";
+					break;
+				case "flussoT":
+					url =  "http://212.77.88.78/views/flowMapT/Dashboard";
+					break;
+			}
+            var containerDiv = document.getElementById(GraphID),
+                options = {
+                    hideTabs: true,
+                    onFirstInteractive: function () {
+                        console.log("Run this code when the viz has finished loading.");
+                    }
+                };
+            
+            // Create a viz object and embed it in the container div.
+            var viz = new tableau.Viz(containerDiv, url, options); 
+			setInterval(function () {viz.refreshDataAsync() }, 10000);
+
+        }
+    </script>
+
+</body>
+</html>
